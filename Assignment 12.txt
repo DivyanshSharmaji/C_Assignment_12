@@ -1,0 +1,271 @@
+C Language Community LIVE Classes
+Assignment-12
+
+
+1. Write a program to print first N terms of a Fibonacci series
+2. Write a program to calculate HCF of two numbers
+3. Write a program to display following patterns: 
+	
+	a.	*	b.	*	c.	1
+	     **	     ***	     121
+	    ***	    *****	    12321
+	   ****	   *******	   1234321
+
+
+	d. ABCD	e. ABCDCBA	f. 1000001
+	   ABC	    ABCBA	    10001
+	   AB		     ABA	     101
+	   A			A		1
+
+
+	g.	*	h. 54321
+	     ***	   4321
+	    *****	   321
+	     ***	   21
+		*	   1
+
+Solutions of Assignment - 12 :-
+
+Ans.1 :- #include<stdio.h>
+	   int main(){
+		int i=1,n,a=0,b=1,c=1;
+		printf("Enter how many terms you of the fibonacci series you wanted to print :- ");
+		scanf("%d",&n);
+		printf("0 ");
+		while(i<n){
+			printf("%d ",c);
+			c = a+b;
+			a = b;
+			b = c;
+			i++;
+		}
+		return 0;
+	   }
+
+Ans.2 :- #include<stdio.h>
+
+	   int isprime(int);
+
+	   int main(){
+         	int hcf,a,b,h=1,at,bt;
+		printf("Enter two numbers :- ");
+		scanf("%d %d",&a,&b);
+	      at = a;
+    		bt = b;
+		hcf = a<b?a:b;
+		while(hcf>=2 && a>0 && b>0){
+			if(a%hcf == 0 && b%hcf ==0 && isprime(hcf)){
+            	h = h*hcf;
+            	a = a/hcf;
+            	b = b/hcf;
+	      	hcf = a<b?a:b;
+            	if(a%hcf==0 && b%hcf==0){
+            		    continue;
+            		} // end of if 1
+			} // end of if 2
+			hcf--;
+		} // end of while
+		printf("HCF of %d and %d is %d\n",at,bt,h);
+		return 0;
+	   }
+	   int isprime(int n){
+    		int i;
+    		for(i=2;i<=n/2;i++){
+    			if(n%i==0){
+    				return 0;
+    			}
+    	   	}
+    	   	return 1;
+	   }
+
+Ans.3 :-
+
+	a.	#include<stdio.h>
+        
+        	int main(){
+        
+            	int i,j;
+            	for(i=1;i<=4;i++){
+            	    for(j=1;j<=4;j++){
+            	        if(j>=5-i){
+            	            printf("*");
+            	        }
+            	        else{
+            	            printf(" ");
+            	        }
+                	}
+                	printf("\n");
+            	}
+        
+            	return 0;
+        	}
+
+	b.	#include<stdio.h>
+
+            int main(){
+
+                int i,j;
+                for(i=1;i<=4;i++){
+                    for(j=1;j<=7;j++){
+                        if(j>=5-i && j<=3+i){
+                            printf("*");
+                        }
+                        else{
+                            printf(" ");
+                        }
+                    }
+                    printf("\n");
+                }
+
+                return 0;
+            }
+	
+	c.    #include<stdio.h>
+
+            int main(){
+
+                int i,j,k;
+                for(i=1;i<=4;i++){
+                    k=1;
+                    for(j=1;j<=7;j++){
+                        if(j>=5-i && j<=3+i){
+                            if(j>=4){
+                                printf("%d",k);
+                                k--;
+                            }
+                            else{
+                                printf("%d",k);
+                                k++;
+                            }
+                        }
+                        else{
+                            printf(" ");
+                        }
+                    }
+                    printf("\n");
+                }
+
+                return 0;
+            }
+
+	d.    #include<stdio.h>
+
+            int main(){
+
+                int i,j;
+                char ch;
+                for(i=1;i<=4;i++){
+                    ch = 'A';
+                    for(j=4;j>=1;j--){
+                        if(j>=i){
+                            printf("%c",ch);
+                            ch++;
+                        }
+                        else{
+                            printf(" ");
+                        }
+                    }
+                    printf("\n");
+                }
+
+                return 0;
+            }
+
+	e.	#include<stdio.h>
+
+            int main(){
+
+                int i,j;
+                char ch;
+                for(i=1;i<=4;i++){
+                    ch = 'A';
+                    for(j=1;j<=7;j++){
+                        if(j>=i && j<=8-i){
+                            if(j>=4){
+                                printf("%c",ch);
+                                ch--;
+                            }
+                            else{
+                                printf("%c",ch);
+                                ch++;
+                            }
+                        }
+                        else{
+                            printf(" ");
+                        }
+                    }
+                    printf("\n");
+                }
+
+                return 0;
+            }
+
+	f.    #include<stdio.h>
+
+            int main(){
+
+                int i,j;
+                for(i=1;i<=4;i++){
+                    for(j=1;j<=7;j++){
+                        if(j>=i && j<=8-i){
+                            if(j==i || j==8-i){
+                                printf("1");
+                            }
+                            else{
+                                printf("0");
+                            }
+                        }
+                        else{
+                            printf(" ");
+                        }
+                    }
+                    printf("\n");
+                }
+
+                return 0;
+            }
+
+	g.    #include<stdio.h>
+
+            int main(){
+
+                int i,j;
+                for(i=1;i<=5;i++){
+                    for(j=1;j<=5;j++){
+                        if(i<=3 && j>=4-i && j<=2+i){
+                            printf("*");
+                        }
+                        else if(i>=3 && j>=i-2 && j<=8-i){
+                            printf("*");
+                        }
+                        else{
+                            printf(" ");
+                        }
+                    }
+                    printf("\n");
+                }
+
+                return 0;
+            }
+
+	h.    #include<stdio.h>
+
+            int main(){
+
+                int i,j,k;
+                for(i=1;i<=5;i++){
+                    k=6-i;
+                    for(j=1;j<=5;j++){
+                        if(j<=6-i){
+                            printf("%d",k);
+                            k--;
+                        }
+                        else{
+                            printf(" ");
+                        }
+                    }
+                    printf("\n");
+                }
+
+                return 0;
+            }
